@@ -6,6 +6,8 @@
 #include "config_testBPF.h"
 
 float val_raw[SIZE_WINDOWS] = { 0 };
+float val_lpfd;
+float val_hpfd;
 float hz;
 
 void setup() {
@@ -17,9 +19,11 @@ void loop() {
   // put your main code here, to run repeatedly:
   queueue();
   val_raw[0] = (float)analogRead(PIN_ANLG);
-  Serial.println(val_raw[0]);
   val_lpfd = lpf(val_raw[0]);
   val_hpfd = hpf(val_lpfd);
+  Serial.print(val_raw[0]);
+  Serial.print(",");
+  Serial.println(val_raw[0]);
   delay(1000 / RATE_SAMPLE);
 }
 
