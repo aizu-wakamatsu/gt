@@ -20,10 +20,18 @@ void loop() {
   queueue();
   val_raw[0] = (float)analogRead(PIN_ANLG);
   val_lpfd = lpf(val_raw[0]);
-  val_hpfd = hpf(val_lpfd);
+  val_hpfd = hpf(val_raw[0]);
+  Serial.print("raw:");
   Serial.print(val_raw[0]);
   Serial.print(",");
-  Serial.println(val_raw[0]);
+  Serial.print("LPfiltered:");
+  Serial.print(val_lpfd);
+  Serial.print(",");
+  Serial.print("HPfiltered:");
+  Serial.print(val_hpfd);
+  Serial.print(",");
+  Serial.print("Mov Avg:");
+  Serial.println(movavg(1));
   delay(1000 / RATE_SAMPLE);
 }
 
@@ -42,4 +50,13 @@ float lpf(float z) {
 
 float hpf(float z) {
   return (-1.0 + 32.0 * powf(z, -16.0)) + powf(z, -32.0) / (1.0 + powf(z, -1.0));
+}
+
+float movavg(float z) {
+  short c;
+  float v = 0;
+  for (c = 0; c <= SIZE_WINDOWS - 1; c++) {
+    v += val_raw[c];
+  }
+  return v / SIZE_WINDOWS;
 }
