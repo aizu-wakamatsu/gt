@@ -14,6 +14,7 @@ void setup() {
 
 void loop() {
   // put your main code here, to run repeatedly:
+  float sum;
   queueue();
   val_raw[0] = (float)analogRead(PIN_ANLG);
 
@@ -27,4 +28,11 @@ void queueue() {
     val_raw[c] = val_raw[c - 1];
   }
   val_raw[0] = 0;
+}
+
+void fir() {
+  short i = 0;
+  for (i = 0 ; i < SIZE_WINDOWS ; ++i){
+    
+  }
 }
