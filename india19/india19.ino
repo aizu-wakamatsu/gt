@@ -20,7 +20,7 @@ void loop() {
   float sum;
   queueue();
   x[0] = (float)analogRead(PIN_ANLG);
-
+  printValu();
   delay(1000 / RATE_SAMPLE);
 }
 
@@ -40,4 +40,11 @@ void fir() {
   for (i = 0; i < SIZE_WINDOWS; ++i) {
     y[0] += coef[i] * x[i];
   }
+}
+
+void printValu() {
+  Serial.print("x:");
+  Serial.print(x[0]);
+  Serial.print(",y:");
+  Serial.println(y[0]);
 }
