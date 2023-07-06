@@ -24,9 +24,9 @@ void loop() {
   Serial.print(val_raw[0]);
   Serial.print(",");
   Serial.print("LPfiltered:");
-  Serial.print(val_lpfd[0]);
+  Serial.println(val_lpfd[0]);
   delay(1000 / RATE_SAMPLE);
-}]
+}
 
 void queueue() {
   // AULD 9 ... 0 LAST
