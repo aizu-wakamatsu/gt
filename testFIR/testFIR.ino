@@ -5,8 +5,8 @@
 
 #include "config_testLPF.h"
 
-float val_raw[SIZE_WINDOWS] = { 0 };
-float val_lpfd[SIZE_WINDOWS] = { 0 };
+float x[SIZE_WINDOWS] = { 0 };
+float y[SIZE_WINDOWS] = { 0 };
 float val_hpfd;
 float hz;
 
@@ -18,13 +18,13 @@ void setup() {
 void loop() {
   // put your main code here, to run repeatedly:
   queueue();
-  val_raw[0] = (float)analogRead(PIN_ANLG);
-  val_lpfd[0] = lpf(val_raw[0]);
+  x[0] = (float)analogRead(PIN_ANLG);
+  y[0] = lpf(x[0]);
   Serial.print("raw:");
-  Serial.print(val_raw[0]);
+  Serial.print(x[0]);
   Serial.print(",");
   Serial.print("LPfiltered:");
-  Serial.println(val_lpfd[0]);
+  Serial.println(y[0]);
   delay(1000 / RATE_SAMPLE);
 }
 
@@ -32,17 +32,19 @@ void queueue() {
   // AULD 9 ... 0 LAST
   short c = 0;
   for (c = SIZE_WINDOWS - 1; c >= 1; --c) {
-    val_raw[c] = val_raw[c - 1];
-    val_lpfd[c] = val_lpfd[c - 1];
+    x[c] = x[c - 1];
+    y[c] = y[c - 1];
   }
-  val_raw[0] = 0;
-  val_lpfd[0] = 0;
+  x[0] = 0;
+  y[0] = 0;
 }
 
-float lpf(float z) {
-  return (1 - c) * val_lpfd[1] + c * val_raw[0];
+void fir() {
+  short k = 0;
+  for (k = 0; k < SIZE_WINDOWS; ++k {
+    y[0] += coef[k] * x[k];
+  }
 }
-
 
 float movavg(float z) {
   short c;
