@@ -5,7 +5,7 @@ const short RATE_SAMPLE = 200;
 
 const float c = 0.40;
 
-float param[SIZE_WINDOWS];
+float coef[SIZE_WINDOWS];
 
 /* 
 void param_coef() {// f=0.25

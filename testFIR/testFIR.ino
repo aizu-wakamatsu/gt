@@ -3,7 +3,7 @@
   test for low-pass filter
 */
 
-#include "config_testLPF.h"
+#include "config_testFIR.h"
 
 float x[SIZE_WINDOWS] = { 0 };
 float y[SIZE_WINDOWS] = { 0 };
@@ -19,7 +19,7 @@ void loop() {
   // put your main code here, to run repeatedly:
   queueue();
   x[0] = (float)analogRead(PIN_ANLG);
-  y[0] = lpf(x[0]);
+  fir();
   Serial.print("raw:");
   Serial.print(x[0]);
   Serial.print(",");
@@ -41,7 +41,7 @@ void queueue() {
 
 void fir() {
   short k = 0;
-  for (k = 0; k < SIZE_WINDOWS; ++k {
+  for (k = 0; k < SIZE_WINDOWS; ++k) {
     y[0] += coef[k] * x[k];
   }
 }
@@ -50,7 +50,7 @@ float movavg(float z) {
   short c;
   float v = 0;
   for (c = 0; c <= SIZE_WINDOWS - 1; c++) {
-    v += val_raw[c];
+    v += x[c];
   }
   return v / SIZE_WINDOWS;
 }
