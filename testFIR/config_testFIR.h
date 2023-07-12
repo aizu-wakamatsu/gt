@@ -1,14 +1,13 @@
 #define PIN_ANLG A0
 
 const short SIZE_WINDOWS = 11;
-const short RATE_SAMPLE = 200;
+const short RATE_SAMPLE = 250;
 
-const float c = 0.40;
+const double c = 0.40;
 
-float coef[SIZE_WINDOWS];
+double coef[SIZE_WINDOWS];
 
-/* 
-void param_coef() {// f=0.25
+void set_param_fir_0l25() {// f=0.25
   coef[0] = 6.366197723675814e-02;
   coef[1] = -1.949085916259688e-17;
   coef[2] = -1.061032953945969e-01;
@@ -21,8 +20,8 @@ void param_coef() {// f=0.25
   coef[9] = -1.949085916259688e-17;
   coef[10] = 6.366197723675814e-02;
 }
-*/
-void param_fir() {  // f=0.2
+
+void set_param_fir_0l20() {  // f=0.2
   coef[0] = -1.559268733007750e-17;
   coef[1] = -7.568267286406570e-02;
   coef[2] = -6.236595225257593e-02;
