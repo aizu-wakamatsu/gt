@@ -23,3 +23,16 @@ evaluation of prototype electrode module for measuring ECG
 to apply:
 
 - FIR filter
+
+
+## system overview
+
+|Layer|module|||
+|:-:|:-:|:-:|:-:|
+|3|ECG measuring shield|<---(cable)--->|Electrodes|
+||\|\||||
+|2|FaBo I/O shield|||
+||\|\||||
+|1|SD card shield|||
+||\|\||||
+|G|Arduino UNO or compatible board|||
