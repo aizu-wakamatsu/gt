@@ -11,6 +11,8 @@ This repo is for my graduation thesis(GT). Main purpose of this GT research is t
 
 evaluation of prototype electrode module for measuring ECG
 
+We need simple and low-cost ECG measuring module that everyone can operate. The device for medical use measure ECH signal with high accuracy but they are difficult to operate and expensive. It is not suitable for measure signal in ordinary life.
+
 ## List
 
 1. Make electrode module
