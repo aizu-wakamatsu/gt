@@ -1,16 +1,21 @@
 /*
-  india19.ino
-  test for filter
+  main.ino
 */
+
+#include <Arduino_FreeRTOS.h> 
 
 #include <SPI.h>
 #include <SD.h>
-#include "config_india19.h"
+#include "main.h"
 
 File wfile;
 
 float x[SIZE_WINDOWS] = { 0 };
 float y[SIZE_WINDOWS] = { 0 };
+
+unsigned long otime = 0;
+
+short v[4000] = {0};
 
 void setup() {
   // put your setup code here, to run once:
@@ -21,48 +26,25 @@ void setup() {
   if (!wfile) {
     fail();
   }
-  digitalWrite(PIN_LED, HIGH);
-  delay(200);
-  digitalWrite(PIN_LED, LOW);
-  delay(200);
-  digitalWrite(PIN_LED, HIGH);
-  delay(200);
-  digitalWrite(PIN_LED, LOW);
-  delay(200);
-  digitalWrite(PIN_LED, HIGH);
-  delay(200);
-  digitalWrite(PIN_LED, LOW);
 }
 
 void loop() {
   // put your main code here, to run repeatedly:
   float sum;
-  queueue();
   x[0] = (float)analogRead(PIN_ANLG);
-  fir();
   printValu();
   if (digitalRead(PIN_SW) == HIGH) {
     end();
   }
   delay(1000 / RATE_SAMPLE);
+  for (int i = 0 ; i < 2000 ; i++){
+    v[i] = i;
+  }
 }
 
-void queueue() {
-  // AULD 9 ... 0 LAST
-  short c = 0;
-  for (c = SIZE_WINDOWS - 1; c >= 1; --c) {
-    x[c] = x[c - 1];
-    y[c] = y[c - 1];
-  }
-  x[0] = 0;
-  y[0] = 0;
-}
 
-void fir() {
-  short i = 0;
-  for (i = 0; i < SIZE_WINDOWS; ++i) {
-    y[0] += coef[i] * x[i];
-  }
+void measure (){
+ analogRead)(PIMN_ED):
 }
 
 void printValu() {
@@ -93,21 +75,8 @@ void begin_sd() {
 
 void fail() {
   while (1) {
-    digitalWrite(PIN_LED, HIGH); // F
-    delay(200);
-    digitalWrite(PIN_LED, LOW);
-    delay(200);
-    digitalWrite(PIN_LED, HIGH);
-    delay(200);
-    digitalWrite(PIN_LED, LOW);
-    delay(200);
-    digitalWrite(PIN_LED, HIGH);
-    delay(500);
-    digitalWrite(PIN_LED, LOW);
-    delay(200);
-    digitalWrite(PIN_LED, HIGH);
-    delay(200);
-    digitalWrite(PIN_LED, LOW);
+    morse('F');
+    morse(' ');
     delay(1000);
   }
 }
@@ -115,29 +84,73 @@ void fail() {
 void end() {
   wfile.close();
   while (1) {
-    digitalWrite(PIN_LED, HIGH);  // E
-    delay(200);
-    digitalWrite(PIN_LED, LOW);
-    delay(1000);
-    digitalWrite(PIN_LED, HIGH);  // N
-    delay(500);
-    digitalWrite(PIN_LED, LOW);
-    delay(200);
-    digitalWrite(PIN_LED, HIGH);
-    delay(200);
-    digitalWrite(PIN_LED, LOW);
-    delay(1000);
-    digitalWrite(PIN_LED, HIGH);  // D
-    delay(500);
-    digitalWrite(PIN_LED, LOW);
-    delay(200);
-    digitalWrite(PIN_LED, HIGH);
-    delay(200);
-    digitalWrite(PIN_LED, LOW);
-    delay(200);
-    digitalWrite(PIN_LED, HIGH);
-    delay(200);
-    digitalWrite(PIN_LED, LOW);
-    delay(2000);
+    morse('E');
+    morse('N');
+    morse('D');
+    morse(' ');
   }
+}
+
+void morse(char l) {
+  if (l == 'D') {
+    digitalWrite(PIN_LED, HIGH);
+    delay(500);
+    digitalWrite(PIN_LED, LOW);
+    delay(200);
+    digitalWrite(PIN_LED, HIGH);
+    delay(200);
+    digitalWrite(PIN_LED, LOW);
+    delay(200);
+    digitalWrite(PIN_LED, HIGH);
+    delay(200);
+    digitalWrite(PIN_LED, LOW);
+  }
+  if (l == 'E') {
+    digitalWrite(PIN_LED, HIGH);
+    delay(200);
+    digitalWrite(PIN_LED, LOW);
+  }
+  if (l == 'F') {
+    digitalWrite(PIN_LED, HIGH);
+    delay(200);
+    digitalWrite(PIN_LED, LOW);
+    delay(200);
+    digitalWrite(PIN_LED, HIGH);
+    delay(200);
+    digitalWrite(PIN_LED, LOW);
+    delay(200);
+    digitalWrite(PIN_LED, HIGH);
+    delay(500);
+    digitalWrite(PIN_LED, LOW);
+    delay(200);
+    digitalWrite(PIN_LED, HIGH);
+    delay(200);
+    digitalWrite(PIN_LED, LOW);
+  }
+  if (l == 'N') {
+    digitalWrite(PIN_LED, HIGH);
+    delay(500);
+    digitalWrite(PIN_LED, LOW);
+    delay(200);
+    digitalWrite(PIN_LED, HIGH);
+    delay(200);
+    digitalWrite(PIN_LED, LOW);
+  }
+  if (l == 'S') {
+    digitalWrite(PIN_LED, HIGH);
+    delay(200);
+    digitalWrite(PIN_LED, LOW);
+    delay(200);
+    digitalWrite(PIN_LED, HIGH);
+    delay(200);
+    digitalWrite(PIN_LED, LOW);
+    delay(200);
+    digitalWrite(PIN_LED, HIGH);
+    delay(200);
+    digitalWrite(PIN_LED, LOW);
+  }
+  if (l == ' ') {
+    delay(1000);
+  }
+  delay(1000);
 }
