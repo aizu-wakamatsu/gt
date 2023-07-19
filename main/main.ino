@@ -1,12 +1,13 @@
 /*
   main.ino
 
-  Error: .._.: fail to load SD card
+  Error: .._.(F): fail to load SD card
 */
 
 //#include <Arduino_FreeRTOS.h>
 
-#define DEBUG
+// define DEBUG to send debug message to serial
+//#define DEBUG
 
 #include <SPI.h>
 #include <SD.h>
@@ -28,9 +29,9 @@ unsigned long otime = 0;
 
 void setup() {
 #ifdef DEBUG
+  Serial.begin(250000);
   Serial.println("BOOT SYSTEM 'D");
 #endif
-  Serial.begin(250000);
   //param_coef();
   begin_sd();
 #ifdef DEBUG
