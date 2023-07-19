@@ -1,4 +1,6 @@
 #define PIN_ANLG A0
+#define PIN_LED A1
+#define PIN_SW A2
 
 const short SIZE_WINDOWS = 11;
 const short RATE_SAMPLE = 250;

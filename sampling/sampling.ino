@@ -19,17 +19,19 @@ void setup() {
   set_param_fir_0l25();
 }
 
+
 void loop() {
   // put your main code here, to run repeatedly:
-  queueue();
+  //queueue();
   x[0] = (double)analogRead(PIN_ANLG);
-  fir();
+  //fir();
   Serial.print("raw:");
-  Serial.print(x[0]);
-  Serial.print(",");
-  Serial.print("LPfiltered:");
-  Serial.println(y[0]);
-  delay(1000 / RATE_SAMPLE);
+  Serial.println(x[0]);
+  //Serial.print(",");
+  //Serial.print("LPfiltered:");
+  //Serial.println(y[0]);
+  //delay(1000 / RATE_SAMPLE);
+  delayMicroseconds(1000000 / RATE_SAMPLE);
 }
 
 void set_param_fir_0l25() {  // f=0.25

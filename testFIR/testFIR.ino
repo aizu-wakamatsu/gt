@@ -12,6 +12,12 @@ void setup() {
   // put your setup code here, to run once:
   Serial.begin(115200);
   set_param_fir_0l25();
+  begin_sd();
+  wfile = SD.open(FILENAME, FILE_WRITE);
+  if (!wfile) {
+    fail();
+  }
+  led_start();
 }
 
 void loop() {
@@ -19,11 +25,15 @@ void loop() {
   queueue();
   x[0] = (double)analogRead(PIN_ANLG);
   fir();
-  Serial.print("raw:");
-  Serial.print(x[0]);
-  Serial.print(",");
-  Serial.print("LPfiltered:");
-  Serial.println(y[0]);
+  //Serial.print("raw:");
+  //Serial.print(x[0]);
+  //Serial.print(",");
+  //Serial.print("LPfiltered:");
+  //Serial.println(y[0]);
+  printValu();
+  if (digitalRead(PIN_SW) == HIGH) {
+    end();
+  }
   delay(1000 / RATE_SAMPLE);
 }
 
