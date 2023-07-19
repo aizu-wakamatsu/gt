@@ -6,6 +6,8 @@
 const short RATE_SAMPLE = 200;
 const short SIZE_WINDOWS = 11;
 
+const short SECS_MEASURES = 20;
+
 float coef[SIZE_WINDOWS];
 /* 
 void param_coef() {// f=0.25

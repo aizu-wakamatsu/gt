@@ -2,7 +2,7 @@
   main.ino
 */
 
-#include <Arduino_FreeRTOS.h> 
+//#include <Arduino_FreeRTOS.h>
 
 #include <SPI.h>
 #include <SD.h>
@@ -10,15 +10,19 @@
 
 File wfile;
 
-float x[SIZE_WINDOWS] = { 0 };
-float y[SIZE_WINDOWS] = { 0 };
+// use if filter process on board
+//float x[SIZE_WINDOWS] = { 0 };
+//float y[SIZE_WINDOWS] = { 0 };
 
+float x;
+
+// interval
 unsigned long otime = 0;
 
-short v[4000] = {0};
+// buffer for write
+//short v[4000] = {0};
 
 void setup() {
-  // put your setup code here, to run once:
   Serial.begin(9600);
   param_coef();
   begin_sd();
@@ -29,41 +33,49 @@ void setup() {
 }
 
 void loop() {
-  // put your main code here, to run repeatedly:
-  float sum;
-  x[0] = (float)analogRead(PIN_ANLG);
-  printValu();
+  //float sum;
+  otime = millis();
+  //x[0] = (float)analogRead(PIN_ANLG);
+  //printValu();
+  measure();
   if (digitalRead(PIN_SW) == HIGH) {
     end();
   }
-  delay(1000 / RATE_SAMPLE);
-  for (int i = 0 ; i < 2000 ; i++){
-    v[i] = i;
-  }
+  //delay(1000 / RATE_SAMPLE);
+  //for (int i = 0 ; i < 2000 ; i++){
+  //  v[i] = i;
+  //}
 }
 
-
-void measure (){
- analogRead)(PIMN_ED):
+void measure() {
+  int size_records = SECS_MEASURES * RATE_SAMPLE;
+  int delay_target = 1000 / SECS_MEASURES;
+  int count = 0;
+  while (count < size_records) {
+    x = (float)analogRead(PIN_ANLG);
+    printValu();
+    while (millis_now < delay_target) {
+    }
+  }
 }
 
 void printValu() {
   static int c = 0;
   if (c == 0) {
-    wfile.println("count,time,raw,filtered");
+    wfile.println("count,raw,filtered");
     c++;
   }
-  Serial.print("x:");
-  Serial.print(x[0]);
-  Serial.print(",y:");
-  Serial.println(y[0]);
-  wfile.print(c);
-  wfile.print(",");
-  //wfile.print((1.0/(float)RATE_SAMPLE)*((float)c-1.0));
-  wfile.print(",");
-  wfile.print(x[0]);
-  wfile.print(",");
-  wfile.println(y[0]);
+  // Serial.print("x:");
+  // Serial.print(x[0]);
+  // Serial.print(",y:");
+  // Serial.println(y[0]);
+  // wfile.print(c);
+  // wfile.print(",");
+  // //wfile.print((1.0/(float)RATE_SAMPLE)*((float)c-1.0));
+  // wfile.print(",");
+  // wfile.print(x[0]);
+  // wfile.print(",");
+  // wfile.println(y[0]);
   c++;
 }
 
