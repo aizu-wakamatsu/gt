@@ -85,6 +85,7 @@ void printValu() {  // must be called once at setup
   static int c = 0;
   if (c == 0) {
     wfile.println("x,y");
+    c++;
   } else {
 #ifdef DEBUG
     Serial.print("[INFO] VALUE x:");
