@@ -1,19 +1,21 @@
 /*
   main.ino
 
+  Depend: "libsds.h" "libblinkgpios.h" "conf.h"
+
   Error: .._.(F): fail to load SD card
 */
 
 //#include <Arduino_FreeRTOS.h>
 
 // define DEBUG to send debug message to serial
-//#define DEBUG
+// #define DEBUG
 
-#include <SPI.h>
-#include <SD.h>
-#include "main.h"
+#include "def_board.h"
+#include "libsds.h"
+#include "libblinkgpios.h"
+#include "conf.h"
 
-File wfile;
 
 // use if filter process on board
 //float x[SIZE_WINDOWS] = { 0 };
@@ -29,45 +31,31 @@ unsigned long otime = 0;
 
 void setup() {
 #ifdef DEBUG
-  Serial.begin(250000);
-  Serial.println("BOOT SYSTEM 'D");
+  Serial.begin(RATE_BAUD);
+  Serial.println("[INFO] HELLO");
 #endif
   //param_coef();
   begin_sd();
 #ifdef DEBUG
-  Serial.println("BEGIN SD 'D");
-#endif
-  wfile = SD.open(FILENAME, FILE_WRITE);
-  if (!wfile) {
-    fail();
-  }
-//otime = millis();
-#ifdef DEBUG
-  Serial.println("READY");
+  Serial.println("[INFO] SD Card OK");
+  Serial.println("[INFO] READY");
 #endif
   start();
 #ifdef DEBUG
-  Serial.println("START MEASURE");
+  Serial.println("[INFO] Start measurement......NOW!");
 #endif
   measure();
 #ifdef DEBUG
-  Serial.println("END");
+  Serial.println("[INFO] Measurement finished.");
 #endif
-  end();
+  end_sd();
 }
 
 void loop() {
-  //float sum;
-  //x[0] = (float)analogRead(PIN_ANLG);
-  //printValu();
-
-  // if (digitalRead(PIN_SW) == HIGH) {
-  //   end();
-  // }
-  //delay(1000 / RATE_SAMPLE);
-  //for (int i = 0 ; i < 2000 ; i++){
-  //  v[i] = i;
-  //}
+#ifdef DEBUG
+  Serial.println("[INFO] END OF PROGRAM -- NOTHING TO DO");
+#endif
+  terminate();
 }
 
 void measure() {
@@ -81,11 +69,15 @@ void measure() {
     printValu();
     while (millis() < ms_delay) {
 #ifdef DEBUG
-      Serial.println(millis());
-#endif
+      if (millis() % 10 == 0) {
+      Serial.print("[INFO] System time: ");
+      Serial.print(millis());
+      Serial.println("msec");
     }
-    count++;
+#endif
   }
+  count++;
+}
 }
 
 
@@ -93,33 +85,17 @@ void printValu() {  // must be called once at setup
   static int c = 0;
   if (c == 0) {
     wfile.println("x,y");
-  }
-  // Serial.print("x:");
-  // Serial.print(x[0]);
-  // Serial.print(",y:");
-  // Serial.println(y[0]);
-
-  wfile.print(c);
-  wfile.print(",");
-  wfile.println(x);
-  // wfile.print(",");
-  // wfile.print(x[0]);
-  // wfile.print(",");
-  // wfile.println(y[0]);
-  c++;
-}
-
-void begin_sd() {
-  if (!SD.begin(4)) {
-    fail();
-  }
-}
-
-void fail() {
-  while (1) {
-    morse('F');
-    morse(' ');
-    delay(1000);
+  } else {
+#ifdef DEBUG
+    Serial.print("[INFO] VALUE x:");
+    Serial.print(c);
+    Serial.print(", y:");
+    Serial.println(x);
+#endif
+    wfile.print(c);
+    wfile.print(",");
+    wfile.println(x);
+    c++;
   }
 }
 
@@ -131,103 +107,11 @@ void start() {
   morse('T');
 }
 
-void end() {
-  wfile.close();
+void terminate() {
   while (1) {
     morse('E');
     morse('N');
     morse('D');
     morse(' ');
   }
-}
-
-void morse(char l) {
-  if (l == 'A') {
-    digitalWrite(PIN_LED, HIGH);
-    delay(200);
-    digitalWrite(PIN_LED, LOW);
-    delay(200);
-    digitalWrite(PIN_LED, HIGH);
-    delay(500);
-    digitalWrite(PIN_LED, LOW);
-  }
-  if (l == 'D') {
-    digitalWrite(PIN_LED, HIGH);
-    delay(500);
-    digitalWrite(PIN_LED, LOW);
-    delay(200);
-    digitalWrite(PIN_LED, HIGH);
-    delay(200);
-    digitalWrite(PIN_LED, LOW);
-    delay(200);
-    digitalWrite(PIN_LED, HIGH);
-    delay(200);
-    digitalWrite(PIN_LED, LOW);
-  }
-  if (l == 'E') {
-    digitalWrite(PIN_LED, HIGH);
-    delay(200);
-    digitalWrite(PIN_LED, LOW);
-  }
-  if (l == 'F') {
-    digitalWrite(PIN_LED, HIGH);
-    delay(200);
-    digitalWrite(PIN_LED, LOW);
-    delay(200);
-    digitalWrite(PIN_LED, HIGH);
-    delay(200);
-    digitalWrite(PIN_LED, LOW);
-    delay(200);
-    digitalWrite(PIN_LED, HIGH);
-    delay(500);
-    digitalWrite(PIN_LED, LOW);
-    delay(200);
-    digitalWrite(PIN_LED, HIGH);
-    delay(200);
-    digitalWrite(PIN_LED, LOW);
-  }
-  if (l == 'N') {
-    digitalWrite(PIN_LED, HIGH);
-    delay(500);
-    digitalWrite(PIN_LED, LOW);
-    delay(200);
-    digitalWrite(PIN_LED, HIGH);
-    delay(200);
-    digitalWrite(PIN_LED, LOW);
-  }
-  if (l == 'R') {
-    digitalWrite(PIN_LED, HIGH);
-    delay(200);
-    digitalWrite(PIN_LED, LOW);
-    delay(200);
-    digitalWrite(PIN_LED, HIGH);
-    delay(500);
-    digitalWrite(PIN_LED, LOW);
-    delay(200);
-    digitalWrite(PIN_LED, HIGH);
-    delay(200);
-    digitalWrite(PIN_LED, LOW);
-  }
-  if (l == 'S') {
-    digitalWrite(PIN_LED, HIGH);
-    delay(200);
-    digitalWrite(PIN_LED, LOW);
-    delay(200);
-    digitalWrite(PIN_LED, HIGH);
-    delay(200);
-    digitalWrite(PIN_LED, LOW);
-    delay(200);
-    digitalWrite(PIN_LED, HIGH);
-    delay(200);
-    digitalWrite(PIN_LED, LOW);
-  }
-  if (l == 'T') {
-    digitalWrite(PIN_LED, HIGH);
-    delay(500);
-    digitalWrite(PIN_LED, LOW);
-  }
-  if (l == ' ') {
-    delay(1000);
-  }
-  delay(1000);
 }
