@@ -22,6 +22,8 @@ We need simple and low-cost ECG measuring module that everyone can operate. The 
 
 ## ToDo NOW
 
+*out of progress - until 1 Sep*
+
 to apply:
 
 - FIR filter
