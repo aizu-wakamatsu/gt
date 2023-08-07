@@ -5,13 +5,14 @@ any code of this repo are not usable because we push something to this repo as b
 
 ## repo desc
 
-This repo is for my graduation thesis(GT). Main purpose of this GT research is to find how useful the prototype by our research. To evaluate our prototype, we made some small programs.
+This repo is for our graduation thesis(GT). Main purpose of this GT research is to find how useful the prototype by our research. To evaluate our prototype, we made some small programs.
 
 ## main topic of research
 
 evaluation of prototype electrode module for measuring ECG
 
-We need simple and low-cost ECG measuring module that everyone can operate. The device for medical use measure ECH signal with high accuracy but they are difficult to operate and expensive. It is not suitable for measure signal in ordinary life.
+We conduct this research to measure performance of electrode using AGPoss® fibre on IoT ECG measuring device.
+
 
 ## List
 
