@@ -21,14 +21,13 @@ We conduct this research to measure performance of electrode using AGPoss® fibr
 3. applying filter method for noise reduction
 4. evaluate signal quality
 
-## ToDo NOW
+## Progress
 
-*out of progress - until 1 Sep*
-
-to apply:
-
-- FIR filter
-
+- make prototype
+- measure RAW signal
+- FIR filter using Kaiser window ... in progress
+- Obtain filtered signal
+- evaluate
 
 ## system overview
 
