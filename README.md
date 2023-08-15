@@ -13,6 +13,8 @@ evaluation of prototype electrode module for measuring ECG
 
 We conduct this research to measure performance of electrode using AGPoss® fibre on IoT ECG measuring device.
 
+We compare the electrode to fastclip, which are used in medical diagnostics.
+
 
 ## List
 
@@ -23,11 +25,23 @@ We conduct this research to measure performance of electrode using AGPoss® fibr
 
 ## Progress
 
-- make prototype
-- measure RAW signal
-- FIR filter using Kaiser window ... in progress
-- Obtain filtered signal
-- evaluate
+- make measuring module
+- signal measuring test (with fastclip)
+- make prototype electrode module
+- signal measuring test (with prototype)
+- analyse RAW signal to obtain noise effects not related to device
+- construct optimal experiment environment
+- apply FIR filter using Kaiser window ... in progress
+- analyse filtered signal
+- ??? 
+
+## Schedule
+
+- 04/2022 Start research for writing thesis
+- 09/2022 1st Mid-term presentation
+- 04/2023 2nd Mid-term presentation
+- 04/2024 3rd Mid-term presentation
+- 08/2024 GT presentation
 
 ## system overview
 
