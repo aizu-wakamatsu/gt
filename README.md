@@ -15,6 +15,15 @@ We conduct this research to measure performance of electrode using AGPoss® fibr
 
 We compare the electrode to fastclip, which are used in medical diagnostics.
 
+## Background
+
+Medical-use device is expensive or difficult to operate.
+
+## Motivation
+
+Medical device for everyone
+
+- Medical-grade system in simple mechanism and low cost (to buy, and operate)
 
 ## List
 
