@@ -25,6 +25,12 @@ Medical device for everyone
 
 - Medical-grade system in simple mechanism and low cost (to buy, and operate)
 
+## Method
+
+Make ECG measuring module using IoT prototyping pratform.
+
+Daily-use device does not need high acculacy like that of medical-use device.
+
 ## List
 
 1. Make electrode module
