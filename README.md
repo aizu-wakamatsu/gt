@@ -3,9 +3,9 @@ graduation thesis
 
 any code of this repo are not usable because we push something to this repo as backup of our storage labs
 
-## repo desc
+## repo description
 
-This repo is for our graduation thesis(GT). Main purpose of this GT research is to find how useful the prototype by our research. To evaluate our prototype, we made some small programs.
+This repo is for our graduation thesis(GT). most, not all, materials of our GT are in this repo.
 
 ## main topic of research
 
