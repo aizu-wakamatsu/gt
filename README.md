@@ -5,7 +5,7 @@ any code of this repo are not usable because we push something to this repo as b
 
 ## repo description
 
-This repo is for our graduation thesis(GT). most, not all, materials of our GT are in this repo.
+This repo is for our graduation thesis(GT). most, not all, materials of our GT are in this repo. We will hold a presentation of this GT in August 2024.
 
 ## main topic of research
 
