@@ -17,7 +17,7 @@ We compare the electrode to fastclip, which are used in medical diagnostics.
 
 ## Background
 
-Medical-use device is expensive or difficult to operate (for people not friendly to technologies).
+Medical-use device is expensive or difficult to operate.
 
 ## Motivation
 
