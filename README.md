@@ -23,7 +23,7 @@ Medical-use device is expensive or difficult to operate (for people not friendly
 
 Medical device for everyone
 
-- Medical-grade system in simple mechanism and low cost (to buy, and operate)
+- Medical-use system in simple mechanism and low cost (to buy, and operate)
 
 ## Method
 
