@@ -31,14 +31,14 @@ Make ECG measuring module using IoT prototyping pratform.
 
 Daily-use device does not need high acculacy like that of medical-use device.
 
-## List
+## Procedure
 
 1. Make electrode module
 2. signal measurement test
 3. applying filter method for noise reduction
 4. evaluate signal quality
 
-## Progress
+## Task List
 
 - make measuring module
 - signal measuring test (with fastclip)
@@ -48,7 +48,11 @@ Daily-use device does not need high acculacy like that of medical-use device.
 - construct optimal experiment environment
 - apply FIR filter using Kaiser window ... in progress
 - analyse filtered signal
-- ??? 
+- ???
+
+## Shinchoku
+
+
 
 ## Schedule
 
