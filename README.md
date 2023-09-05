@@ -31,7 +31,7 @@ Make ECG measuring module using IoT prototyping pratform.
 
 Daily-use device does not need high acculacy like that of medical-use device.
 
-## Procedure
+## Brief description of procedure
 
 1. Make electrode module
 2. signal measurement test
