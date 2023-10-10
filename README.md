@@ -38,12 +38,12 @@ Daily-use device does not need high acculacy like that of medical-use device.
 3. applying filter method for noise reduction
 4. evaluate signal quality
 
-## Task List
+## Task List - Entire
 
-- make measuring module
+- make measuring module (not electrodes)
 - signal measuring test (with fastclip)
-- make prototype electrode module
-- signal measuring test (with prototype)
+- make prototype electrode module 
+- signal measuring test (with that prototype)
 - analyse RAW signal to obtain noise effects not related to device
 - construct optimal experiment environment
 - apply FIR filter using Kaiser window ... in progress
