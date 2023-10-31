@@ -1,31 +1,66 @@
 # gt
-GT 
+graduation thesis
 
 any code of this repo are not usable because we push something to this repo as backup of our storage labs
 
-## repo desc
+## repo description
 
-This repo is for my graduation thesis(GT). Main purpose of this GT research is to find how useful the prototype by our research. To evaluate our prototype, we made some small programs.
+This repo is for our graduation thesis(GT). most, not all, materials of our GT are in this repo. We will hold a presentation of this GT in August 2024.
 
 ## main topic of research
 
 evaluation of prototype electrode module for measuring ECG
 
-We need simple and low-cost ECG measuring module that everyone can operate. The device for medical use measure ECH signal with high accuracy but they are difficult to operate and expensive. It is not suitable for measure signal in ordinary life.
+We conduct this research to measure performance of electrode using AGPoss® fibre on IoT ECG measuring device.
 
-## List
+We compare the electrode to fastclip, which are used in medical diagnostics.
+
+## Background
+
+Medical-use device is expensive or difficult to operate (for people not friendly to technologies).
+
+## Motivation
+
+Medical device for everyone
+
+- Medical-use system in simple mechanism and low cost (to buy, and operate)
+
+## Method
+
+Make ECG measuring module using IoT prototyping pratform.
+
+Daily-use device does not need high acculacy like that of medical-use device.
+
+## Brief description of procedure
 
 1. Make electrode module
 2. signal measurement test
 3. applying filter method for noise reduction
 4. evaluate signal quality
 
-## ToDo NOW
+## Task List - Entire
 
-to apply:
+- make measuring module (not electrodes)
+- signal measuring test (with fastclip)
+- make prototype electrode module 
+- signal measuring test (with that prototype)
+- analyse RAW signal to obtain noise effects not related to device
+- construct optimal experiment environment
+- apply FIR filter using Kaiser window ... in progress
+- analyse filtered signal
+- ???
 
-- FIR filter
+## Shinchoku
 
+
+
+## Schedule
+
+- 04/2022 Start research for writing thesis
+- 09/2022 1st Mid-term presentation
+- 04/2023 2nd Mid-term presentation
+- 04/2024 3rd Mid-term presentation
+- 08/2024 GT presentation
 
 ## system overview
 
