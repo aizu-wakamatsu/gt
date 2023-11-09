@@ -52,6 +52,7 @@ Daily-use device does not need high acculacy like that of medical-use device.
 
 ## Shinchoku
 
+- Measurement ECG of human body
 
 
 ## Schedule
@@ -59,6 +60,7 @@ Daily-use device does not need high acculacy like that of medical-use device.
 - 04/2022 Start research for writing thesis
 - 09/2022 1st Mid-term presentation
 - 04/2023 2nd Mid-term presentation
+- 12/2023 Complete of writing thesis and all experiments
 - 04/2024 3rd Mid-term presentation
 - 08/2024 GT presentation
 
