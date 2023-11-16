@@ -1,21 +1,25 @@
 /*
   main.ino
 
-  USING SERIAL COMMUNICATION
+  Depend: "libsds.h" "libblinkgpios.h" "conf.h"
 
-  Depend: "libblinkgpios.h" "conf.h"
-
+  Error: .._.(F): fail to load SD card
 */
 
 //#include <Arduino_FreeRTOS.h>
 
 // define DEBUG to send debug message to serial
-//#define DEBUG
+// #define DEBUG
 
 #include "def_board.h"
-//#include "libsds.h"
+#include "libsds.h"
 #include "libblinkgpios.h"
 #include "conf.h"
+
+
+// use if filter process on board
+//float x[SIZE_WINDOWS] = { 0 };
+//float y[SIZE_WINDOWS] = { 0 };
 
 // raw value from sensor
 short x;
@@ -27,16 +31,14 @@ unsigned long otime = 0;
 //short v[4000] = {0};
 
 void setup() {
-  morse('T');
-  Serial.begin(RATE_BAUD);
-    Serial.println("x,y");
 #ifdef DEBUG
+  Serial.begin(RATE_BAUD);
   Serial.println("[INFO] HELLO");
 #endif
   //param_coef();
-  //begin_sd(); // initialise SD card
+  begin_sd(); // initialise SD card
 #ifdef DEBUG
-  // Serial.println("[INFO] SD Card OK");
+  Serial.println("[INFO] SD Card OK");
   Serial.println("[INFO] READY");
 #endif
   start();
@@ -47,7 +49,7 @@ void setup() {
 #ifdef DEBUG
   Serial.println("[INFO] Measurement finished.");
 #endif
-  //end_sd();
+  end_sd();
 }
 
 void loop() {
@@ -58,43 +60,32 @@ void loop() {
 }
 
 void measure() {
-#ifdef DEBUG
-  Serial.println("[INFO] Function measure()");
-#endif
-  double size_records = (double)SECS_MEASURES * (double)RATE_SAMPLE;  // total count of sample
-  double delay_target = 1000.00 / RATE_SAMPLE;           // delay ms per sample
+  int size_records = SECS_MEASURES * RATE_SAMPLE;  // total count of sample
+  int delay_target = 1000 / RATE_SAMPLE;           // delay ms per sample
   int count = 0;
-  double ms_delay = 0;
-#ifdef DEBUG
-  Serial.print("[INFO] Record size: ");
-  Serial.println(size_records);
-  Serial.print("[INFO] Time per sample: ");
-  Serial.print(delay_target);
-  Serial.println("ms");
-#endif
+  int ms_delay = 0;
   while (count < size_records) {
     ms_delay = millis() + delay_target;
     x = (float)analogRead(PIN_ANLG);
-    printValu();  // print to file
+    printValu(); // print to file
     while (millis() < ms_delay) {
 #ifdef DEBUG
       if (millis() % 10 == 0) {
-        Serial.print("[INFO] System time: ");
-        Serial.print(millis());
-        Serial.println("msec");
-      }
-#endif
+      Serial.print("[INFO] System time: ");
+      Serial.print(millis());
+      Serial.println("msec");
     }
-    count++;
+#endif
   }
+  count++;
+}
 }
 
-// printValu() using serial
 
 void printValu() {  // must be called once at setup
   static int c = 0;
   if (c == 0) {
-    //Serial.println("x,y");
+    wfile.println("x,y");
     c++;
   } else {
 #ifdef DEBUG
@@ -103,15 +94,14 @@ void printValu() {  // must be called once at setup
     Serial.print(", y:");
     Serial.println(x);
 #endif
-    //Serial.print(c);
-    //Serial.print(",");
-    Serial.println(x);
+    wfile.print(c);
+    wfile.print(",");
+    wfile.println(x);
     c++;
   }
 }
 
 void start() {
-  delay(DELAY_STARTS * 1000);
   morse('S');
   morse('T');
   morse('A');

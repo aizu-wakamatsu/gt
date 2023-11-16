@@ -5,23 +5,12 @@
 
 const int RATE_BAUD = 9600;
 
-
-// time to be a rest state (secondss)
-const int DELAY_STARTS = 10;
-
-const double RATE_SAMPLE = 200;
-
+const short RATE_SAMPLE = 200;
 const short SIZE_WINDOWS = 11;
 
-const double SECS_MEASURES = 60;
+const short SECS_MEASURES = 20;
 
 float coef[SIZE_WINDOWS];
-
-// use if filter process on board
-//float x[SIZE_WINDOWS] = { 0 };
-//float y[SIZE_WINDOWS] = { 0 };
-
-
 /* 
 void param_coef() {// f=0.25
   coef[0] = 6.366197723675814e-02;
