@@ -21,6 +21,7 @@
 //float x[SIZE_WINDOWS] = { 0 };
 //float y[SIZE_WINDOWS] = { 0 };
 
+// raw value from sensor
 short x;
 
 // interval
@@ -35,7 +36,7 @@ void setup() {
   Serial.println("[INFO] HELLO");
 #endif
   //param_coef();
-  begin_sd();
+  begin_sd(); // initialise SD card
 #ifdef DEBUG
   Serial.println("[INFO] SD Card OK");
   Serial.println("[INFO] READY");
@@ -66,7 +67,7 @@ void measure() {
   while (count < size_records) {
     ms_delay = millis() + delay_target;
     x = (float)analogRead(PIN_ANLG);
-    printValu();
+    printValu(); // print to file
     while (millis() < ms_delay) {
 #ifdef DEBUG
       if (millis() % 10 == 0) {
