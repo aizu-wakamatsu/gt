@@ -49,6 +49,7 @@ Daily-use device does not need high acculacy like that of medical-use device.
 - apply FIR filter using Kaiser window ... in progress
 - analyse filtered signal
 - ???
+- ??? (after complete GT)
 
 ## Shinchoku
 
