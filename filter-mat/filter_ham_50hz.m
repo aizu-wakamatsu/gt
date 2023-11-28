@@ -1,8 +1,4 @@
-plot(filter_f(test_raw_200hz))
-
-
-
-function y = filter_f(x)
+function y = filter_ham(x)
 %FILTER_F 入力 x をフィルター処理し、出力 y を返します。
 
 % MATLAB Code
