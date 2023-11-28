@@ -16,7 +16,7 @@ double coef[SIZE_WINDOWS];
 void setup() {
   // put your setup code here, to run once:
   Serial.begin(115200);
-  set_param_fir_0l25();
+  set_param_fir_0p25();
 }
 
 
@@ -34,7 +34,7 @@ void loop() {
   delayMicroseconds(1000000 / RATE_SAMPLE);
 }
 
-void set_param_fir_0l25() {  // f=0.25
+void set_param_fir_0p25() {  // f=0.25
   coef[0] = 6.366197723675814e-02;
   coef[1] = -1.949085916259688e-17;
   coef[2] = -1.061032953945969e-01;
