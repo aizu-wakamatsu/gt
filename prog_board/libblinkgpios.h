@@ -4,7 +4,7 @@
 */
 
 void morse(char l) {
-  if (l == 'A') {  // ·-
+  if (l == 'A') {  // ·- 700ms
     digitalWrite(PIN_LED, HIGH);
     delay(200);
     digitalWrite(PIN_LED, LOW);
@@ -57,7 +57,7 @@ void morse(char l) {
     delay(200);
     digitalWrite(PIN_LED, LOW);
   }
-  if (l == 'R') {  // ·-·
+  if (l == 'R') {  // ·-· 1300ms
     digitalWrite(PIN_LED, HIGH);
     delay(200);
     digitalWrite(PIN_LED, LOW);
@@ -70,7 +70,7 @@ void morse(char l) {
     delay(200);
     digitalWrite(PIN_LED, LOW);
   }
-  if (l == 'S') {  // ···
+  if (l == 'S') {  // ··· 1000ms
     digitalWrite(PIN_LED, HIGH);
     delay(200);
     digitalWrite(PIN_LED, LOW);
@@ -83,7 +83,7 @@ void morse(char l) {
     delay(200);
     digitalWrite(PIN_LED, LOW);
   }
-  if (l == 'T') {  // -
+  if (l == 'T') {  // - 500ms
     digitalWrite(PIN_LED, HIGH);
     delay(500);
     digitalWrite(PIN_LED, LOW);

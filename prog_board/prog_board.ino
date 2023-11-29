@@ -111,7 +111,7 @@ void printValu() {  // must be called once at setup
 }
 
 void start() {
-  delay(DELAY_STARTS * 1000);
+  delay(DELAY_STARTS * 1000 - 9000); // take 9 seconds to show morse signal "START"
   morse('S');
   morse('T');
   morse('A');
