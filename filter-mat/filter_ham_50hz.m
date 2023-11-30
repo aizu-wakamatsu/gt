@@ -1,4 +1,4 @@
-function y = filter_ham(x)
+function y = filter_ham_50hz(x)
 %FILTER_F 入力 x をフィルター処理し、出力 y を返します。
 
 % MATLAB Code
