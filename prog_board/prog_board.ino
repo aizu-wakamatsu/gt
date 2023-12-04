@@ -10,7 +10,8 @@
 //#include <Arduino_FreeRTOS.h>
 
 // define DEBUG to send debug message to serial
-//#define DEBUG
+// #define DEBUG
+
 
 #include "def_board.h"
 //#include "libsds.h"
@@ -27,9 +28,10 @@ unsigned long otime = 0;
 //short v[4000] = {0};
 
 void setup() {
+  pinMode(PIN_LED, OUTPUT);
   morse('T');
   Serial.begin(RATE_BAUD);
-    Serial.println("x,y");
+  Serial.println("x,y");
 #ifdef DEBUG
   Serial.println("[INFO] HELLO");
 #endif
@@ -62,7 +64,7 @@ void measure() {
   Serial.println("[INFO] Function measure()");
 #endif
   double size_records = (double)SECS_MEASURES * (double)RATE_SAMPLE;  // total count of sample
-  double delay_target = 1000.00 / RATE_SAMPLE;           // delay ms per sample
+  double delay_target = 1000.00 / RATE_SAMPLE;                        // delay ms per sample
   int count = 0;
   double ms_delay = 0;
 #ifdef DEBUG
@@ -111,7 +113,7 @@ void printValu() {  // must be called once at setup
 }
 
 void start() {
-  delay(DELAY_STARTS * 1000 - 9000); // take 9 seconds to show morse signal "START"
+  delay(DELAY_STARTS * 1000 - 9000);  // take 9 seconds to show morse signal "START"
   morse('S');
   morse('T');
   morse('A');

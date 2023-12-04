@@ -1,4 +1,5 @@
 function y = filter_ham_50hz(x)
+plot(y)
 %FILTER_F 入力 x をフィルター処理し、出力 y を返します。
 
 % MATLAB Code

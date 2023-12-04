@@ -2,14 +2,12 @@
  * parameter configs
 */
 
-
-const int RATE_BAUD = 9600;
-
+#define RATE_BAUD 115200
 
 // time to be a rest state (secondss)
 const int DELAY_STARTS = 10;
 
-const double RATE_SAMPLE = 200;
+const double RATE_SAMPLE = 1000;
 
 const short SIZE_WINDOWS = 11;
 
