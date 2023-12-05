@@ -7,11 +7,11 @@
 // time to be a rest state (secondss)
 const int DELAY_STARTS = 10;
 
-const double RATE_SAMPLE = 1000;
+const unsigned int RATE_SAMPLE = 1000;
 
 const short SIZE_WINDOWS = 11;
 
-const double SECS_MEASURES = 60;
+const unsigned int SECS_MEASURES = 60;
 
 float coef[SIZE_WINDOWS];
 

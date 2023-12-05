@@ -63,11 +63,10 @@ void measure() {
 #ifdef DEBUG
   Serial.println("[INFO] Function measure()");
 #endif
-  unsigned long tm = millis();
   unsigned int size_records = SECS_MEASURES * RATE_SAMPLE;  // total count of sample
   double delay_target = 1000.00 / RATE_SAMPLE;              // delay ms per sample
   unsigned int count = 0;
-  double ms_delay = 0;
+  unsigned long ms_delay = 0;
 #ifdef DEBUG
   Serial.print("[INFO] Record size: ");
   Serial.println(size_records);
@@ -75,11 +74,13 @@ void measure() {
   Serial.print(delay_target);
   Serial.println("ms");
 #endif
+  unsigned long tm = millis();
   while (count < size_records) {
-    ms_delay = millis() + delay_target;
+    // ms_delay = millis() + delay_target;
+    ms_delay = millis();
     x = (float)analogRead(PIN_ANLG);
     printValu();  // print to file
-    while (millis() < ms_delay) {
+    while (millis() == ms_delay) {
 #ifdef DEBUG
       if (millis() % 10 == 0) {
         Serial.print("[INFO] System time: ");
