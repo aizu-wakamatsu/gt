@@ -31,7 +31,7 @@ void setup() {
   pinMode(PIN_LED, OUTPUT);
   morse('T');
   Serial.begin(RATE_BAUD);
-  Serial.println("x,y");
+  Serial.println("---START---");
 #ifdef DEBUG
   Serial.println("[INFO] HELLO");
 #endif
@@ -63,9 +63,10 @@ void measure() {
 #ifdef DEBUG
   Serial.println("[INFO] Function measure()");
 #endif
-  double size_records = (double)SECS_MEASURES * (double)RATE_SAMPLE;  // total count of sample
-  double delay_target = 1000.00 / RATE_SAMPLE;                        // delay ms per sample
-  int count = 0;
+  unsigned long tm = millis();
+  unsigned int size_records = SECS_MEASURES * RATE_SAMPLE;  // total count of sample
+  double delay_target = 1000.00 / RATE_SAMPLE;              // delay ms per sample
+  unsigned int count = 0;
   double ms_delay = 0;
 #ifdef DEBUG
   Serial.print("[INFO] Record size: ");
@@ -89,12 +90,16 @@ void measure() {
     }
     count++;
   }
+  Serial.println("---END---");
+  Serial.print("[INFO] ");
+  Serial.print(millis() - tm);
+  Serial.println("ms elapsed.");
 }
 
 // printValu() using serial
 
 void printValu() {  // must be called once at setup
-  static int c = 0;
+  static unsigned int c = 0;
   if (c == 0) {
     //Serial.println("x,y");
     c++;
