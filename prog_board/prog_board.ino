@@ -80,9 +80,9 @@ void measure() {
     ms_delay = millis();
     x = (float)analogRead(PIN_ANLG);
     printValu();  // print to file
-    while (millis() == ms_delay) {
+    while (millis() < tm + count) {
 #ifdef DEBUG
-      if (millis() % 10 == 0) {
+      if (millis() % 100 == 0) {
         Serial.print("[INFO] System time: ");
         Serial.print(millis());
         Serial.println("msec");
