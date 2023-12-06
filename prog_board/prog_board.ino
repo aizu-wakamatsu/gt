@@ -1,9 +1,9 @@
 /*
-  main.ino
+ * main.ino
 
-  USING SERIAL COMMUNICATION
+ * USING SERIAL COMMUNICATION
 
-  Depend: "def_board.h" "libblinkgpios.h" "conf.h"
+ * Depend: "def_board.h" "libblinkgpios.h" "conf.h"
 
 */
 
@@ -12,7 +12,6 @@
 
 
 #include "def_board.h"
-//#include "libsds.h"
 #include "libblinkgpios.h"
 #include "conf.h"
 
@@ -27,12 +26,6 @@ void setup() {
   Serial.begin(RATE_BAUD);
   Serial.println("---START---");
 #ifdef DEBUG
-  Serial.println("[INFO] HELLO");
-#endif
-  //param_coef();
-  //begin_sd(); // initialise SD card
-#ifdef DEBUG
-  // Serial.println("[INFO] SD Card OK");
   Serial.println("[INFO] READY");
 #endif
   start();
@@ -43,7 +36,6 @@ void setup() {
 #ifdef DEBUG
   Serial.println("[INFO] Measurement finished.");
 #endif
-  //end_sd();
 }
 
 // loop(): Send "END" signal.
