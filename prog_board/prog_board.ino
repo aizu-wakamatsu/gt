@@ -3,13 +3,11 @@
 
   USING SERIAL COMMUNICATION
 
-  Depend: "libblinkgpios.h" "conf.h"
+  Depend: "def_board.h" "libblinkgpios.h" "conf.h"
 
 */
 
-//#include <Arduino_FreeRTOS.h>
-
-// define DEBUG to send debug message to serial
+// Define DEBUG here to send debug message to computer.
 // #define DEBUG
 
 
@@ -18,14 +16,10 @@
 #include "libblinkgpios.h"
 #include "conf.h"
 
-// raw value from sensor
-short x;
+// raw value from sensor (0-1023)
+unsigned short x;
 
-// interval
-unsigned long otime = 0;
-
-// buffer for write
-//short v[4000] = {0};
+// setup(): Initialise board for measurement.
 
 void setup() {
   pinMode(PIN_LED, OUTPUT);
@@ -52,12 +46,16 @@ void setup() {
   //end_sd();
 }
 
+// loop(): Send "END" signal.
+
 void loop() {
 #ifdef DEBUG
   Serial.println("[INFO] END OF PROGRAM -- NOTHING TO DO");
 #endif
   terminate();
 }
+
+// measure(): Measure ECG data from ECG shield.
 
 void measure() {
 #ifdef DEBUG
@@ -97,7 +95,7 @@ void measure() {
   Serial.println("ms elapsed.");
 }
 
-// printValu() using serial
+// printValu(): Send raw ECG data to computer using serial connection.
 
 void printValu() {  // must be called once at setup
   static unsigned int c = 0;
@@ -118,6 +116,8 @@ void printValu() {  // must be called once at setup
   }
 }
 
+// start(): Wait 10 seconds before measuring.
+
 void start() {
   delay(DELAY_STARTS * 1000 - 9000);  // take 9 seconds to show morse signal "START"
   morse('S');
@@ -126,6 +126,8 @@ void start() {
   morse('R');
   morse('T');
 }
+
+// terminate(): Show "END" signal to tell user end of measuring.
 
 void terminate() {
   while (1) {
