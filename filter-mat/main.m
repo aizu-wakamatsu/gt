@@ -6,7 +6,7 @@ fcl = fcl(1001:2000);
 
 t = (0:length(agp)-1)/Fs;
 fn = designfilt('bandstopiir','FilterOrder',20, ...
-               'HalfPowerFrequency1',40,'HalfPowerFrequency2',70, ...
+               'HalfPowerFrequency1',49,'HalfPowerFrequency2',51, ...
                'DesignMethod','butter','SampleRate',Fs);
 
 
@@ -64,3 +64,4 @@ xlabel('Time (s)')
 title6 = title('AGPoss - Raw/Filtered Combined plot');
 title6.FontSize = 16;
 grid on
+
