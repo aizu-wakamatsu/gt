@@ -64,3 +64,4 @@ xlabel('Time (s)')
 title6 = title('AGPoss - Raw/Filtered Combined plot');
 title6.FontSize = 16;
 grid on
+
