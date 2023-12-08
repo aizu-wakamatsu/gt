@@ -1,12 +1,12 @@
 Fs = 1000;   % Sampling frequency
 agp = a2023120709h45;
-agp = agp(1001:2000);
+agp = agp(701:2700);
 fcl = f2023120709h48;
-fcl = fcl(1001:2000);
+fcl = fcl(701:2700);
 
 t = (0:length(agp)-1)/Fs;
-fn = designfilt('bandstopiir','FilterOrder',20, ...
-               'HalfPowerFrequency1',40,'HalfPowerFrequency2',70, ...
+fn = designfilt('bandstopiir','FilterOrder',200, ...
+               'HalfPowerFrequency1',49,'HalfPowerFrequency2',51, ...
                'DesignMethod','butter','SampleRate',Fs);
 
 
