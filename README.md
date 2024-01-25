@@ -53,7 +53,7 @@ Daily-use device does not need high acculacy like that of medical-use device.
 
 ## Shinchoku
 
-- Measurement ECG of human body
+- Measurement ECG of human body with two types of electrode
 
 
 ## Schedule
