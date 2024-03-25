@@ -68,7 +68,8 @@ void measure() {
 #endif
   unsigned long tm = millis();
   while (count <= size_records) {
-    while () {
+    wait:
+    while (true) {
     }
     x = (float)analogRead(PIN_ANLG);
     printValu();  // print to file
