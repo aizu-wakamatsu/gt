@@ -1,11 +1,11 @@
 /*
- * main.ino
+ * prog_trigtest_u1.ino
 
- * USING SERIAL COMMUNICATION
+ * triggered sampling test for measurement module 1
 
  * triggered by trigger
 
- * Depend: "def_board.h" "libblinkgpios.h" "conf.h"
+ * Depend: "def_board.h" "conf.h"
 
 */
 
@@ -14,7 +14,6 @@
 
 
 #include "def_board.h"
-#include "libblinkgpios.h"
 #include "conf.h"
 
 // raw value from sensor (0-1023)
@@ -23,54 +22,39 @@ unsigned short x;
 // setup(): Initialise board for measurement.
 
 void setup() {
-  pinMode(PIN_LED, OUTPUT);
-  morse('T');
   Serial.begin(RATE_BAUD);
+  Serial.println("[INFO] UNIT NO: 1");
   Serial.println("---START---");
-#ifdef DEBUG
-  Serial.println("[INFO] READY");
-#endif
   start();
   measure();
 }
 
-// loop(): Send "END" signal.
+// loop(): Do nothing. (called after measurement finished)
 
 void loop() {
-#ifdef DEBUG
-  Serial.println("[INFO] END OF PROGRAM -- NOTHING TO DO");
-#endif
   terminate();
 }
 
-// measure(): Measure ECG data from ECG shield.
+// measure(): Measure ECG data from ECG shield. (but this is not sent to host computer.)
 
 void measure() {
-#ifdef DEBUG
-  Serial.println("[INFO] Function measure()");
-#endif
   unsigned int size_records = SECS_MEASURES * RATE_SAMPLE;  // total count of sample
   double delay_target = 1000.00 / RATE_SAMPLE;              // delay ms per sample
   unsigned int count = 0;
   unsigned long ms_delay = 0;
-#ifdef DEBUG
-  Serial.print("[INFO] Record size: ");
-  Serial.println(size_records);
-  Serial.print("[INFO] Time per sample: ");
-  Serial.print(delay_target);
-  Serial.println("ms");
-#endif
   unsigned long tm = millis();
   while (count <= size_records) {
-    wait:
     while (true) {
+      if (digitalRead(PIN_TRIG) == HIGH) {
+        break;
+      }
     }
     x = (float)analogRead(PIN_ANLG);
     printValu();  // print to file
     count++;
   }
   Serial.println("---END---");
-  Serial.print("[INFO] ");
+  Serial.print("[INFO] ");  // display the total time elapsed to sample
   Serial.print(millis() - tm);
   Serial.println("ms elapsed.");
 }
@@ -80,18 +64,12 @@ void measure() {
 void printValu() {  // must be called once at setup
   static unsigned int c = 0;
   if (c == 0) {
-    //Serial.println("x,y");
+    c++;
+  } else if (c % 2 == 0) {  // count is even, send "O"
+    Serial.println('O');
     c++;
   } else {
-#ifdef DEBUG
-    Serial.print("[INFO] VALUE x:");
-    Serial.print(c);
-    Serial.print(", y:");
-    Serial.println(x);
-#endif
-    //Serial.print(c);
-    //Serial.print(",");
-    Serial.println(x);
+    Serial.println('X');  // count is odd, send "X"
     c++;
   }
 }
@@ -99,12 +77,7 @@ void printValu() {  // must be called once at setup
 // start(): Wait DELAY_STARTS seconds before measuring.
 
 void start() {
-  delay(DELAY_STARTS * 1000 - 9000);  // take 9 seconds to send morse signal "START"
-  morse('S');
-  morse('T');
-  morse('A');
-  morse('R');
-  morse('T');
+  delay(DELAY_STARTS * 1000 - 9000);  // take DELAY_STARTS seconds to send morse signal "START"
 }
 
 void terminate() {
