@@ -77,7 +77,14 @@ void printValu() {  // must be called once at setup
 // start(): Wait DELAY_STARTS seconds before measuring.
 
 void start() {
-  delay(DELAY_STARTS * 1000 - 9000);  // take DELAY_STARTS seconds to send morse signal "START"
+  int waitss = DELAY_STARTS * RATE_SAMPLE;
+  int count_delays = 0;
+  for (count_delays = 0; count_delays <= waitss; count_delays++) {
+    while (!digitalRead(PIN_TRIG)) {
+    }
+  }
+
+  //delay(DELAY_STARTS * 1000 - 9000);  // take DELAY_STARTS seconds to send morse signal "START"
 }
 
 void terminate() {

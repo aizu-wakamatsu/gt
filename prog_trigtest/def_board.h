@@ -2,7 +2,6 @@
   def_board.h
 
   board-specific settings.
-  DO NOT CHANGE!
   
 */
 
