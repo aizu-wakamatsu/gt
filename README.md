@@ -64,8 +64,8 @@ Daily-use device does not need high acculacy like that of medical-use device.
 
 ## Shinchoku
 
-- Mid-term presentation ... done
-- Measurement ECG of human body with two types of electrode
+- DONE: Mid-term presentation
+- NOW: Measurement ECG of human body with two types of electrode
 
 
 ## Schedule
