@@ -1,11 +1,20 @@
 # gt
 graduation thesis
 
-any code of this repo are not usable because we push something to this repo as backup of our storage labs
+any code of this repo may not usable because we push something to this repo as backup of our storage labs
 
 ## repo description
 
 This repo is for our graduation thesis(GT). most, not all, materials of our GT are in this repo. We will hold a presentation of this GT in August 2024.
+
+- Included
+  - Sample data to test program
+  - Source code
+  - 
+- Not included
+  - Thesis
+  - Poster
+  - Full measured data
 
 ## main topic of research
 
@@ -47,10 +56,11 @@ Daily-use device does not need high acculacy like that of medical-use device.
 - signal measuring test (with that prototype)
 - analyse RAW signal to obtain noise effects not related to device
 - construct optimal experiment environment
-- apply FIR filter using Kaiser window ... in progress
 - analyse filtered signal
 - ???
 - ??? (after complete GT)
+- We will not apply in this thesis
+  - apply FIR filter using Kaiser window 
 
 ## Shinchoku
 
