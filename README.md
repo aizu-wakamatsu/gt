@@ -24,6 +24,7 @@ Medical-use device is expensive or difficult to operate (for people not friendly
 Medical device for everyone
 
 - Medical-use system in simple mechanism and low cost (to buy, and operate)
+- easy to wear, low allergic side-effects.
 
 ## Method
 
