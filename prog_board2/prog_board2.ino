@@ -1,12 +1,16 @@
 /*
- * main.ino
-
- * USING SERIAL COMMUNICATION
-
- * triggered by trigger
-
- * Depend: "def_board.h" "libblinkgpios.h" "conf.h"
-
+ * prog_board1.ino
+ *
+ * Operating mode:
+ * |TRIGGERED mode (external clock)
+ * Data transfer:
+ * |USB-SERIAL
+ * Depend:
+ * |Header file:
+ * |"def_board.h" "libblinkgpios.h" "conf.h"
+ * |External hardware:
+ * |FaBo shield (optional, to indicate status)
+ *
 */
 
 // Define DEBUG here to send debug message to computer.
