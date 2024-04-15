@@ -1,12 +1,16 @@
 /*
  * prog_board1.ino
-
- * STANDALONE mode (internal clock)
-
- * Data transfer using USB-SERIAL
-
- * Depend: "def_board.h" "libblinkgpios.h" "conf.h"
-
+ *
+ * Operating mode:
+ * |STANDALONE mode (internal clock)
+ * Data transfer:
+ * |USB-SERIAL
+ * Depend:
+ * |Header file:
+ * |"def_board.h" "libblinkgpios.h" "conf.h"
+ * |External hardware:
+ * |FaBo shield (to indicate status)
+ *
 */
 
 // Define DEBUG here to send debug message to computer.
