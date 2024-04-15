@@ -1,7 +1,9 @@
 /*
- * main.ino
+ * prog_board1.ino
 
- * USING SERIAL COMMUNICATION
+ * STANDALONE mode (internal clock)
+
+ * Data transfer using USB-SERIAL
 
  * Depend: "def_board.h" "libblinkgpios.h" "conf.h"
 
