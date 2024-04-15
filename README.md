@@ -1,9 +1,8 @@
 # gt
+
 graduation thesis
 
 any code of this repo may not usable because we push something to this repo as backup of our storage labs
-
-
 
 ## repo description
 
