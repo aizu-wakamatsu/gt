@@ -106,7 +106,7 @@ void printValu() {  // must be called once at setup
   }
 }
 
-// start(): Wait 10 seconds before measuring.
+// start(): Wait DELAY_STARTS seconds before measuring.
 
 void start() {
   delay(DELAY_STARTS * 1000 - 9000);  // take 9 seconds to send morse signal "START"
