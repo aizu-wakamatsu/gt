@@ -1,5 +1,5 @@
 /*
- * prog_board1.ino
+ * prog_board2.ino
  *
  * Operating mode:
  * |TRIGGERED mode (external clock)
