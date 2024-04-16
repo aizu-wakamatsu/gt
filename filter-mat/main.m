@@ -25,7 +25,7 @@ title1 = title('Fastclip - Raw');
 title1.FontSize = 16;
 grid on
 subplot(2,3,2)
-plot(t,filtfilt(fn,fcl));
+plot(t,filtfilt(Hd,fcl));
 ylim([ylow yhigh])
 ylabel('Value')
 xlabel('Time (s)')
@@ -33,7 +33,7 @@ title2 = title('Fastclip - Filtered');
 title2.FontSize = 16;
 grid on
 subplot(2,3,3)
-plot(t,fcl,t,filtfilt(fn,fcl));
+plot(t,fcl,t,filtfilt(fir,fcl));
 ylim([ylow yhigh])
 ylabel('Value')
 xlabel('Time (s)')
