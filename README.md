@@ -4,6 +4,10 @@ graduation thesis
 
 any code of this repo may not usable because we push something to this repo as backup of our storage labs
 
+## Note
+
+In this quarter, 2024-1Q, we will conduct this research with the course Ventures Experience Workshops 9.
+
 ## repo description
 
 This repo is for our graduation thesis(GT). most, not all, materials of our GT are in this repo. We will hold a presentation of this GT in August 2024.
