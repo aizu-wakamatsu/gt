@@ -6,7 +6,7 @@ any code of this repo may not usable because we push something to this repo as b
 
 ## Note
 
-In this quarter, 2024-1Q, we will conduct this research with the course Ventures Experience Workshops 9.
+In this quarter, 2024-1Q, we will conduct this research with the course Ventures Experience Workshops 9. In this workshop, we will develop ECG measuring system on the toilet.
 
 ## repo description
 
