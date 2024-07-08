@@ -21,6 +21,7 @@ unsigned short x;
 void setup() {
   pinMode(PIN_LED, OUTPUT);
   Serial.begin(RATE_BAUD);
+  delay(10000);
   Serial.println("---START---");
   measure();
 }
@@ -39,7 +40,7 @@ void measure() {
   unsigned int count = 0;
   unsigned long ms_delay = 0;
   unsigned long tm = millis();
-  while (true) {
+  while (size_records > count) {
     ms_delay = millis();
     x = (float)analogRead(PIN_ANLG);
     printValu();  // print to file
