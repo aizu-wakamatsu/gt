@@ -59,7 +59,7 @@ void measure() {
 #ifdef DEBUG
   Serial.println("[INFO] Function measure()");
 #endif
-  unsigned int size_records = SECS_MEASURES * RATE_SAMPLE;  // total count of sample
+  unsigned int size_records = TIME_MEASUREMENT * RATE_SAMPLE;  // total count of sample
   double delay_target = 1000.00 / RATE_SAMPLE;              // delay ms per sample
   unsigned int count = 0;
   unsigned long ms_delay = 0;

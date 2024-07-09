@@ -6,10 +6,10 @@
 #define RATE_BAUD 115200
 
 // time to be a rest state (s)
-const int DELAY_STARTS = 10;
+const int DELAY_START = 10;
 
-// Sampling rate (S/s)
+// Sampling rate (Sample/s)
 const unsigned int RATE_SAMPLE = 1000;
 
 // Measuring time (s)
-const unsigned int SECS_MEASURES = 60;
+const unsigned int TIME_MEASUREMENT = 60;
