@@ -44,7 +44,7 @@ void measure() {
     ms_delay = millis();
     x = (float)analogRead(PIN_ANLG);
     printValu();  // print to file
-    while (millis() < tm + count) {
+    while (millis() < ms_delay + delay_target) {
     }
     count++;
   }
