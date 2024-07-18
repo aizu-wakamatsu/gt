@@ -60,7 +60,7 @@ void measure() {
   Serial.println("[INFO] Function measure()");
 #endif
   unsigned int size_records = TIME_MEASUREMENT * RATE_SAMPLE;  // total count of sample
-  double delay_target = 1000.00 / RATE_SAMPLE;              // delay ms per sample
+  double delay_target = 1000.00 / RATE_SAMPLE;                 // delay ms per sample
   unsigned int count = 0;
   unsigned long ms_delay = 0;
 #ifdef DEBUG
@@ -76,7 +76,8 @@ void measure() {
     ms_delay = millis();
     x = (float)analogRead(PIN_ANLG);
     printValu();  // print to file
-    while (millis() < tm+ ++count) {
+    while (millis() < ms_delay + delay_target) {
+
 #ifdef DEBUG
       if (millis() % 100 == 0) {
         Serial.print("[INFO] System time: ");
@@ -117,7 +118,7 @@ void printValu() {  // must be called once at setup
 // start(): Wait 10 seconds before measuring.
 
 void start() {
-  delay(DELAY_STARTS * 1000 - 9000);  // take 9 seconds to send morse signal "START"
+  delay(DELAY_START * 1000 - 9000);  // take 9 seconds to send morse signal "START"
   morse('S');
   morse('T');
   morse('A');
