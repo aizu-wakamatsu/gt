@@ -11,6 +11,7 @@
  * |External hardware:
  * |FaBo shield (to indicate status)
  *
+ * 単独でサンプリングするときに使うコード
 */
 
 // Define DEBUG here to send debug message to computer.
