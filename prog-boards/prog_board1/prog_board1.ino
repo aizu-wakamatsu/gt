@@ -7,9 +7,7 @@
  * |USB-SERIAL
  * Depend:
  * |Header file:
- * |"def_board.h" "libblinkgpios.h" "conf.h"
- * |External hardware:
- * |FaBo shield (to indicate status)
+ * |"def_board.h" "conf.h"
  *
 */
 
@@ -18,7 +16,6 @@
 
 
 #include "def_board.h"
-#include "libblinkgpios.h"
 #include "conf.h"
 
 // raw value from sensor (0-1023)
@@ -27,10 +24,7 @@ unsigned short x;
 // setup(): Initialise board for measurement.
 
 void setup() {
-  pinMode(PIN_LED, OUTPUT);
-  morse('T');
   Serial.begin(RATE_BAUD);
-  Serial.println("---START---");
 #ifdef DEBUG
   Serial.println("[INFO] READY");
 #endif
@@ -59,10 +53,10 @@ void measure() {
 #ifdef DEBUG
   Serial.println("[INFO] Function measure()");
 #endif
-  unsigned int size_records = SECS_MEASURES * RATE_SAMPLE;  // total count of sample
-  double delay_target = 1000.00 / RATE_SAMPLE;              // delay ms per sample
-  unsigned int count = 0;
-  unsigned long ms_delay = 0;
+  unsigned int size_records = SEC_MEASURE * RATE_SAMPLE;  // total count of sample
+  double delay_target = 1000.00 / RATE_SAMPLE;            // delay ms per sample
+  unsigned int count = 1;
+  unsigned long time_now = 0;
 #ifdef DEBUG
   Serial.print("[INFO] Record size: ");
   Serial.println(size_records);
@@ -70,13 +64,11 @@ void measure() {
   Serial.print(delay_target);
   Serial.println("ms");
 #endif
-  unsigned long tm = millis();
+  unsigned long time_start = millis();
   while (count <= size_records) {
-    // ms_delay = millis() + delay_target;
-    ms_delay = millis();
     x = (float)analogRead(PIN_ANLG);
-    printValu();  // print to file
-    while (millis() < tm+ ++count) {
+    printValue();  // print to file
+    while (millis() < time_start + (int)delay_target * count) {
 #ifdef DEBUG
       if (millis() % 100 == 0) {
         Serial.print("[INFO] System time: ");
@@ -85,22 +77,23 @@ void measure() {
       }
 #endif
     }
+    time_now = millis();
     count++;
   }
   Serial.println("---END---");
   Serial.print("[INFO] ");
-  Serial.print(millis() - tm);
+  Serial.print(time_now - time_start);
   Serial.println("ms elapsed.");
 }
 
-// printValu(): Send raw ECG data to computer using serial connection.
+// printValue(): Send raw ECG data to computer using serial connection.
 
-void printValu() {  // must be called once at setup
-  static unsigned int c = 0;
-  if (c == 0) {
-    //Serial.println("x,y");
-    c++;
-  } else {
+void printValue() {
+  // static unsigned int c = 0;
+  // if (c == 0) {
+  //   //Serial.println("x,y");
+  //   c++;
+  // } else {
 #ifdef DEBUG
     Serial.print("[INFO] VALUE x:");
     Serial.print(c);
@@ -110,28 +103,20 @@ void printValu() {  // must be called once at setup
     //Serial.print(c);
     //Serial.print(",");
     Serial.println(x);
-    c++;
-  }
+  //   c++;
+  // }
 }
 
-// start(): Wait 10 seconds before measuring.
+// start(): Wait [DELAY_START] seconds before measuring.
 
 void start() {
-  delay(DELAY_STARTS * 1000 - 9000);  // take 9 seconds to send morse signal "START"
-  morse('S');
-  morse('T');
-  morse('A');
-  morse('R');
-  morse('T');
+  delay(DELAY_START * 1000);
+  Serial.println("---START---");
 }
 
-// terminate(): Show "END" signal to tell user end of measuring.
+// terminate(): Do nothing.
 
 void terminate() {
   while (1) {
-    morse('E');
-    morse('N');
-    morse('D');
-    morse(' ');
   }
 }

@@ -3,13 +3,14 @@
  * parameter configs
 */
 
+// baud rate (bps)
 #define RATE_BAUD 115200
 
 // time to be a rest state (s)
-const int DELAY_STARTS = 10;
+const int DELAY_START = 20;
 
 // Sampling rate (S/s)
-const unsigned int RATE_SAMPLE = 1000;
+const unsigned int RATE_SAMPLE = 500;
 
 // Measuring time (s)
-const unsigned int SECS_MEASURES = 60;
+const unsigned int SEC_MEASURE = 60;
