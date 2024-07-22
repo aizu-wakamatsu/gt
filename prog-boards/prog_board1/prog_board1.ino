@@ -9,6 +9,7 @@
  * |Header file:
  * |"def_board.h" "conf.h"
  *
+ * 単独でサンプリングするときに使うコード
 */
 
 // Define DEBUG here to send debug message to computer.
