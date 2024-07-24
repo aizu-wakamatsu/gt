@@ -7,7 +7,7 @@
  * |USB-SERIAL
  * Depend:
  * |Header file:
- * |"def_board.h" "libblinkgpios.h" "conf.h"
+ * |"def_board.h" "conf.h"
  * |External hardware:
  * |FaBo shield (optional, to indicate status)
  *
@@ -18,7 +18,6 @@
 
 
 #include "def_board.h"
-#include "libblinkgpios.h"
 #include "conf.h"
 
 // raw value from sensor (0-1023)
@@ -27,8 +26,6 @@ unsigned short x;
 // setup(): Initialise board for measurement.
 
 void setup() {
-  pinMode(PIN_LED, OUTPUT);
-  morse('T');
   Serial.begin(RATE_BAUD);
   Serial.println("---START---");
 #ifdef DEBUG
@@ -106,24 +103,11 @@ void printValu() {  // must be called once at setup
   }
 }
 
-// start(): Wait DELAY_STARTS seconds before measuring.
-
-void start() {
-  delay(DELAY_STARTS * 1000 - 9000);  // take 9 seconds to send morse signal "START"
-  morse('S');
-  morse('T');
-  morse('A');
-  morse('R');
-  morse('T');
-}
 
 // terminate(): Show "END" signal to tell user end of measuring.
 
 void terminate() {
   while (1) {
-    morse('E');
-    morse('N');
-    morse('D');
-    morse(' ');
+
   }
 }
