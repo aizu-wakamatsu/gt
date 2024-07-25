@@ -7,7 +7,6 @@
   Depend: <SPI.h> <SD.h> "libblinkgpios.h"
 */
 
+// PIN_ANLG: ECG input from SEN0213
 #define PIN_ANLG A0
-#define PIN_LED A1
-#define PIN_SW A2
-#define PIN_CSSDS 4
+
