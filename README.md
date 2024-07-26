@@ -84,7 +84,7 @@ Daily-use device does not need high acculacy like that of medical-use device.
 - 04/2023 2nd Mid-term presentation
 - 12/2023 Complete of writing thesis and all experiments
 - 04/2024 3rd Mid-term presentation
-- 08/2024 GT presentation
+- 08/2024 GT presentation　(14 Aug)
 
 ## Task list of writing thesis
 
