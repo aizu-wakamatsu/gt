@@ -8,6 +8,5 @@
 */
 
 #define PIN_ANLG A0
-#define PIN_LED A1
-#define PIN_SW A2
+#define PIN_TRIG 7
 #define PIN_CSSDS 4
