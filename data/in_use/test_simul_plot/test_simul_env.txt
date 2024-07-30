@@ -1,0 +1,4 @@
+TESTWIT MSG-100: 100BPM
+
+board1: connect directly
+board2: connect using fastclip via attachment
