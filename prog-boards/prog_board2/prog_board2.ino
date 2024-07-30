@@ -58,18 +58,21 @@ void measure() {
   Serial.print("[INFO] Record size: ");
   Serial.println(size_records);
 #endif
-  unsigned long tm = millis();
+  unsigned long tm = 0;
   while (count <= size_records) {
     while (true) {
-      if(digitalRead(PIN_TRIG)){ // wait for clock HIGH
+      if (digitalRead(PIN_TRIG)) {  // wait for clock HIGH
         break;
       }
+    }
+    if (count == 0) {
+      tm = millis();
     }
     x = (float)analogRead(PIN_ANLG);
     printValue();  // print to file
     count++;
-        while (true) {
-      if(!digitalRead(PIN_TRIG)){ //wait for clock LOW
+    while (true) {
+      if (!digitalRead(PIN_TRIG)) {  //wait for clock LOW
         break;
       }
     }
@@ -77,7 +80,7 @@ void measure() {
   Serial.println("---END---");
   Serial.print("[INFO] ");
   Serial.print(millis() - tm);
-  Serial.println("ms elapsed.");// measuring time + α(time to send END signal to computer)
+  Serial.println("ms elapsed.");  // measuring time + α(time to send END signal to computer)
 }
 
 // printValue(): Send raw ECG data to computer using serial connection.
@@ -106,6 +109,5 @@ void printValue() {  // must be called once at setup
 
 void terminate() {
   while (1) {
-
   }
 }
