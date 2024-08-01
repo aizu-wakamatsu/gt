@@ -4,17 +4,15 @@
  * Operating mode:
  * |TRIGGERED mode (external clock)
  * Data transfer:
- * |USB-SERIAL
+ * | USB-SERIAL
  * Depend:
- * |Header file:
- * |"def_board.h" "conf.h"
- * |External hardware:
- * |FaBo shield (optional, to indicate status)
+ * | Header file:
+ * || "def_board.h" "conf.h"
+ * | Shield:
+ * || SEN0213 ECG Measuring module
  *
+ * 複数台のボードで同時にサンプリングするときに使うコード
 */
-
-// Define DEBUG here to send debug message to computer.
-// #define DEBUG
 
 
 #include "def_board.h"
@@ -23,51 +21,35 @@
 // raw value from sensor (0-1023)
 unsigned short x;
 
-// setup(): Initialise board for measurement.
+// setup(): Initialise board and do measurement.
 
 void setup() {
   Serial.begin(RATE_BAUD);
   Serial.println("---START---");
-#ifdef DEBUG
-  Serial.println("[INFO] READY");
-  Serial.println("[INFO] Start measurement......NOW!");
-#endif
   measure();
-#ifdef DEBUG
-  Serial.println("[INFO] Measurement finished.");
-#endif
 }
 
-// loop(): Send "END" signal.
+// loop(): Terminate the program.
 
 void loop() {
-#ifdef DEBUG
-  Serial.println("[INFO] END OF PROGRAM -- NOTHING TO DO");
-#endif
   terminate();
 }
 
 // measure(): Measure ECG data from ECG shield.
 
 void measure() {
-#ifdef DEBUG
-  Serial.println("[INFO] Function measure()");
-#endif
   unsigned int count = 0;
-#ifdef DEBUG
-  Serial.print("[INFO] Record size: ");
-  Serial.println(size_records);
-#endif
   unsigned long tm = 0;
+
   while (count <= size_records) {
     while (true) {
       if (digitalRead(PIN_TRIG)) {  // wait for clock HIGH
         break;
       }
     }
-    if (count == 0) {
-      tm = millis();
-    }
+     if (count == 0) {
+       tm = millis();
+     }
     x = (float)analogRead(PIN_ANLG);
     printValue();  // print to file
     count++;
@@ -85,23 +67,8 @@ void measure() {
 
 // printValue(): Send raw ECG data to computer using serial connection.
 
-void printValue() {  // must be called once at setup
-  static unsigned int c = 0;
-  if (c == 0) {
-    //Serial.println("x,y");
-    c++;
-  } else {
-#ifdef DEBUG
-    Serial.print("[INFO] VALUE x:");
-    Serial.print(c);
-    Serial.print(", y:");
+void printValue() {
     Serial.println(x);
-#endif
-    //Serial.print(c);
-    //Serial.print(",");
-    Serial.println(x);
-    c++;
-  }
 }
 
 

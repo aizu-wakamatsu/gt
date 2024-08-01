@@ -11,7 +11,7 @@
  * | Shield:
  * || SEN0213 ECG Measuring module
  *
- * 単独でサンプリングするときに使うコード
+ * 1台のボードが単独でサンプリングするときに使うコード
 */
 
 #include "def_board.h"
