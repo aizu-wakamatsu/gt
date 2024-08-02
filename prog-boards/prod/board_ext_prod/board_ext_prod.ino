@@ -38,7 +38,7 @@ void loop() {
 // measure(): Measure ECG data from ECG shield.
 
 void measure() {
-  unsigned int count = 0;
+  unsigned int count = 1;
   unsigned long tm = 0;
 
   while (count <= size_records) {
