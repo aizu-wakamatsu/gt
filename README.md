@@ -66,7 +66,7 @@ Daily-use device does not need high acculacy like that of medical-use device.
 - signal measuring test (with that prototype)
 - analyse RAW signal to obtain noise effects not related to device
 - construct optimal experiment environment
-- analyse filtered signal
+- ~~analyse filtered signal~~
 - ???
 - ??? (after complete GT)
 - We will not apply in this thesis
@@ -74,8 +74,8 @@ Daily-use device does not need high acculacy like that of medical-use device.
 
 ## Shinchoku
 
-- DONE: Measurement ECG of human body with two types of electrode
-- NOW: Writing final thesis and presentation
+- DONE: Writing final thesis and presentation
+- NOW: checking final thesis
 
 ## Schedule
 
