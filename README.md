@@ -86,6 +86,8 @@ Daily-use device does not need high acculacy like that of medical-use device.
 - 04/2024 3rd Mid-term presentation
 - 08/2024 GT presentation　(09h20, 14 Aug)
 
+alldone!
+
 ## Task list of writing thesis
 
 ## System overview
